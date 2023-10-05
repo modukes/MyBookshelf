@@ -1,0 +1,20 @@
+body {
+    background-color: #242424;
+    color: white;
+}
+
+a {
+    color: #ffc107;
+}
+
+th {
+    background-color: transparent !important;
+}
+
+td {
+    background-color: transparent !important;
+}
+
+.btn.btn-secondary.btn-block {
+    width: 100% !important;
+}
