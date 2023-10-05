@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}Edit Book{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <br>
+            <div class="d-flex justify-content-between align-items-center">
+                <h1>Edit Book</h1>
+                <a href="{{ url_for('home') }}" class="btn btn-warning btn-sm">Cancel</a>
+            </div>
+            <br>
+            <form method="POST" novalidate>
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    {{ form.book_name.label(class="form-label") }}
+                    {{ form.book_name(class="form-control") }}
+                </div>
+                <br>
+                <div class="form-group">
+                    {{ form.book_author.label(class="form-label") }}
+                    {{ form.book_author(class="form-control") }}
+                </div>
+                <br>
+                <div class="form-group">
+                    {{ form.review.label(class="form-label") }}
+                    {{ form.review(class="form-control", oninput="checkRating(this)") }}
+                    <span id="ratingWarning" style="color: red;"></span>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-secondary btn-block">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function checkRating(input) {
+        var rating = parseFloat(input.value);
+        var warning = document.getElementById('ratingWarning');
+
+        if (isNaN(rating) || rating < 0 || rating > 10) {
+            warning.textContent = 'Rating must be a number between 0 and 10.';
+        } else {
+            warning.textContent = '';
+        }
+    }
+</script>
+{% endblock %}
